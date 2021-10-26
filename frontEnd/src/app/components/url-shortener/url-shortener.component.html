@@ -1,0 +1,44 @@
+<div class="container">
+    <!--Add URL-->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h1>
+                        URL Shortener
+                    </h1>
+                    <form #urlForm="ngForm" class="form-group" (ngSubmite)="addUrl(urlForm)">
+                        <input required placeholder="Enter your full url" type="url" name="full" id="fullUrl" class="form-control" [(ngModel)]="urlService.selectedUrl.full">
+                        <button class="btn btn-primary mt-3" type="submit">Shorten</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!--Table-->
+        <div class="col-md-8">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            URL
+                        </th>
+                        <th>
+                            Visits
+                        </th>
+                        <th>
+                            Shortcode
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let url of urlService.urls">
+                        <td><a [href]="url.full">{{ url.full }}</a></td>
+                        <td><a [href]="url.clicks">{{ url.clicks }}</a></td>
+                        <td><a [href]="url.short">{{ url.short }}</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
